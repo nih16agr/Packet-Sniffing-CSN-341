@@ -3,8 +3,9 @@ from collections import Counter
 
 dest_ip = dict()
 
-def csv_read(csv_file):
-    with open(csv_file) as csv_file:
+def csv_read(csv_parameter):
+    with open(csv_parameter,'r', encoding='utf-8',
+                 errors='ignore') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -29,6 +30,10 @@ def main():
     most_visited = count_ip.most_common(3)
     for i in most_visited:
         print(i[0]," : ",i[1])
+        
+    values = dest_ip.values()
+    total = sum(values)
+    print(total)
 
 if __name__ == "__main__":
     main()
